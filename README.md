@@ -1,3 +1,3 @@
-**ВЕРСИЯ PYTHON 3.12.10**
-**!!!!!!!!!!ВЕСЬ КОД В ВЕТКЕ develop!!!!!!!**
-**ВСЕ НЕОБХОДИМЫЕ БИБЛИОТЕКИ В requirements.txt**
+**PYTHON VERSION 3.12.10**
+
+All requirements in **requirements.txt**
