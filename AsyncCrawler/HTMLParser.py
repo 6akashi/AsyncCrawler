@@ -17,6 +17,7 @@ class HTMLParser:
             result = {
                 'url': url,
                 'title': self.extract_title(),
+                "headers": self.extract_headers(self.soup),
                 'text': self.extract_text(),
                 'links': self.extract_links(url),
                 'metadata': self.extract_metadata(),
@@ -33,6 +34,13 @@ class HTMLParser:
             return self.soup.title.string.strip()
         h1 = self.soup.find("h1")
         return h1.get_text().strip() if h1 else ""
+    
+    def extract_headers(self, soup):
+        # Собираем все h1-h3 для структуры
+        return {
+            "h1": [h.text.strip() for h in soup.find_all('h1')],
+            "h2": [h.text.strip() for h in soup.find_all('h2')]
+        }
 
     def extract_text(self) -> str:
         # Копируем soup, чтобы удаление тегов не испортило ссылки

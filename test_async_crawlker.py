@@ -85,7 +85,7 @@ async def compare_sequential_vs_parallel():
 
     crawler_seq = AsyncCrawler(max_concurent=5)
     for url in urls:
-        succes, content = await crawler_seq.fetch_url(url)
+        succes, content = await crawler_seq.crawl(["https://example.com"], max_pages=1)
         results_seq[url] = content
 
     await crawler_seq.close()
@@ -108,7 +108,7 @@ async def compare_sequential_vs_parallel():
     print(f"Последовательная: {seq_time:.2f} сек")
     print(f"Параллельная: {par_time:.2f} сек")
     print(f"Ускорение: {seq_time/par_time}x")
-
+    
 
 async def main():
     print("ТЕСТЫ")
