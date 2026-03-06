@@ -1,0 +1,18 @@
+# Настройки сети
+max_concurrent: 10
+rate_limit: 2.0
+user_agent: "AdvancedCrawlerBot/2.0 (+https://github.com/6akashi/crawler)"
+
+# Глубина и лимиты
+max_depth: 2
+max_pages: 50
+
+# Логирование
+logging:
+  level: "INFO"
+  file: "crawler.log"
+
+# Настройки по умолчанию для сохранения
+storage:
+  format: "sqlite"  # варианты: sqlite, json, csv
+  filename: "results_db"

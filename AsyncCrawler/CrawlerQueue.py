@@ -33,3 +33,13 @@ class CrawlerQueue:
         if url not in self.visited:
             self.visited.add(url)
             await self.queue.put((url, depth))
+
+    async def clear(self):
+        self.visited = set()
+        while not self.queue.empty():
+            try:
+                self.queue.get_nowait()
+            except asyncio.QueueEmpty:
+                break
+
+        self.processed_count = 0

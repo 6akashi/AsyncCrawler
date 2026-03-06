@@ -83,6 +83,12 @@ class AsyncCrawler:
 
 
     async def crawl(self, start_urls: List[str], max_pages: int = 10):
+        # Сброс состояния
+        await self.queue_manager.clear()
+        self.stats = {k: 0 if isinstance(v, int) else [] for k, v in self.stats.items()}
+        self.blocked_by_robots = 0
+
+
         await self._init_session()
         self.start_time = time.time()
         

@@ -74,3 +74,15 @@ class HTMLParser:
             if name:
                 metadata[name.lower()] = meta.get('content', '')
         return metadata
+    
+    #Заглушки с базовой логикой
+    # AsyncCrawler/HTMLParser.py
+    def extract_headers(self, soup): # Добавь аргумент soup
+        return {f"h{i}": [h.text.strip() for h in soup.find_all(f'h{i}')] for i in range(1, 4)}
+
+    def extract_lists(self, soup):
+        return [li.text.strip() for li in soup.find_all('li')]
+
+    def extract_tables(self, soup):
+        # Базовый сбор таблиц в список списков
+        return [[td.text.strip() for td in tr.find_all('td')] for tr in soup.find_all('tr')]

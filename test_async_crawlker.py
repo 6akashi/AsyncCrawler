@@ -7,7 +7,7 @@ from typing import Dict, List, Optional
 async def demo_feth_single():
     """ОДНА СТРАНИЦА"""
     print("===Демонстарция demo_fetch_single")
-    crawler = AsyncCrawler(max_concurent=2)
+    crawler = AsyncCrawler(max_concurrent=10)
 
     urls = [
         "https://example.com",
@@ -17,15 +17,15 @@ async def demo_feth_single():
 
     for url in urls:
 
-        succes, result = await crawler.fetch_url(url)
+        await crawler.crawl(url)
 
-    if succes:
-        print(f"УСПЕХ ДЛЯ {url}")
-        print(f"ЗАГРУЖЕННО СИМВОЛОВ: {len(result)}")
-        print(f"ПЕРВЫЕ 100 СИМВОЛОВ: {result[100:]}...")
-    else:
-        print(f"ОШИБКА ДЛЯ {url}")
-        print(f"ТЕКСТ ОШИБКИ: {result}")
+    # if succes:
+    #     print(f"УСПЕХ ДЛЯ {url}")
+    #     print(f"ЗАГРУЖЕННО СИМВОЛОВ: {len(result)}")
+    #     print(f"ПЕРВЫЕ 100 СИМВОЛОВ: {result[100:]}...")
+    # else:
+    #     print(f"ОШИБКА ДЛЯ {url}")
+    #     print(f"ТЕКСТ ОШИБКИ: {result}")
 
     await crawler.close()
 
